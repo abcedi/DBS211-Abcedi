@@ -21,7 +21,8 @@ SELECT
   DATEOFPURCHASE,
   SUM(PRICEOFEACH * QUANTITY) AS TotalSales
 FROM PURCHASEHISTORY
-GROUP BY STOREID, DATEOFPURCHASE;
+GROUP BY STOREID, DATEOFPURCHASE
+ORDER BY STOREID, DATEOFPURCHASE;
 
 /* Daily Sales Report by Item */
 -- This view shows daily sales figures by item. It helps identify which items are performing well or poorly,
@@ -32,7 +33,8 @@ SELECT
   DATEOFPURCHASE,
   SUM(PRICEOFEACH * QUANTITY) AS TotalSales
 FROM PURCHASEHISTORY
-GROUP BY ITEMID, DATEOFPURCHASE;
+GROUP BY ITEMID, DATEOFPURCHASE
+ORDER BY ITEMID, DATEOFPURCHASE;
 
 /* Employee Performance Report */
 -- This view summarizes sales performance of each employee, including the number of transactions they handled
@@ -44,7 +46,8 @@ SELECT
   COUNT(DISTINCT PURCHASEID) AS NumberOfSales,
   SUM(PRICEOFEACH * QUANTITY) AS TotalSales
 FROM PURCHASEHISTORY
-GROUP BY EMPLOYEEID;
+GROUP BY EMPLOYEEID
+ORDER BY EMPLOYEEID;
 
 /* Inventory Status Report by Store */
 -- This view provides real time inventory levels for each item in each store. It is essential for managing stock levels,
@@ -54,7 +57,8 @@ SELECT
   STOREID,
   ITEMID,
   QUANTITY
-FROM INVENTORYLEVELS;
+FROM INVENTORYLEVELS
+ORDER BY STOREID, ITEMID;
 
 SELECT * FROM DailySalesByStore;
 SELECT * FROM DailySalesByItem;
